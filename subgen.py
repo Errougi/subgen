@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
 import argparse
 from dotenv import load_dotenv
 load_dotenv()
 
-from argparse import ArgumentParser
 import os
 import warnings
 
@@ -51,7 +49,7 @@ def char_parsing_correct_format(text: str) -> str:
     return text.translate(translation_table)
 
 def main():
-    parser = argparse.ArgumentParser(prog="subcut")
+    parser = argparse.ArgumentParser(prog="subgen")
     parser.add_argument('audio_file', help='Audio file to transcribe')
     parser.add_argument('-m', '--model', default='base', help='Model size')
     parser.add_argument('-l', '--language', default='en', help='Language code')
@@ -88,7 +86,6 @@ def main():
 
         args.device = "cpu"
         if defautls.HIGH_END_DEVICES_EN.count(args.model) > 0 or defautls.HIGH_END_DEVICES.count(args.model) > 0:
-            logger.Warning("WARNING:",["High-end models not recommended. May cause instability on lower-end hardware, use at your own risk"])
             choice = input("Use base model for faster results? [y/n]: ").strip().lower()
             if choice == "n":
                 args_config["model"] = "base"
@@ -102,7 +99,7 @@ def main():
     content_parts = [
         "WEBVTT\n\n"
         "NOTE\n"
-        "This is created by subcut, you can modify as you want, but respect the structure\n"
+        "This is created by subgen, you can modify as you want, but respect the structure\n"
         "For more ref, use: https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API/Web_Video_Text_Tracks_Format#cue_payload_text_tags\n\n"
     ]
 

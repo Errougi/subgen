@@ -9,7 +9,13 @@
 Generate subtitles using `faster-whisper`.
 
 ```bash
-subgen <video.mp4> [--language <lang>] [--model <model>] --output <subs.vtt>
+py subgen.py <video.mp4> [--language <lang>] [--model <model>] --output <subs.vtt>
+```
+
+Example:
+
+```bash
+ py subgen.py ./samples/jfk.wav -m base ./samples/jfk.vtt
 ```
 
 ### Options:
